@@ -6,9 +6,9 @@ module VagrantPlugins
         	machine.ui.warn("networking")
 	      	networks.each do |network|
 	          if network[:type].to_sym == :static
-	            machine.communicate.execute("su -c - \"ifconfig wm#{network[:interface]} inet #{network[:ip]} netmask #{network[:netmask]}\"")
+	            machine.communicate.execute("su -c - \"ifconfig en#{network[:interface]} inet #{network[:ip]} netmask #{network[:netmask]}\"")
 	          elsif network[:type].to_sym == :dhcp
-	            machine.communicate.execute("su -c - \"dhcp.client -i wm#{network[:interface]}\"")
+	            machine.communicate.execute("su -c - \"dhcp.client -i en#{network[:interface]}\"")
 	          end
 	        end
 	      end
